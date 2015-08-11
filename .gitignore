@@ -1,0 +1,40 @@
+*.log
+*.tmp
+*.sublime-project
+*.sublime-workspace
+_ai-cache
+
+
+#### Directory build
+# TODO
+
+
+#### Directory : npm
+node_modules/
+
+
+#### Dot Directory
+.idea/
+.sass-cache/
+
+
+#### Dot file
+.DS_Store
+
+
+#### Deploy
+# TODO
+
+
+#### WordPress
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wp-cache-config.php
+sitemap.xml
+sitemap.xml.gz
