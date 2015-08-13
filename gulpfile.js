@@ -70,7 +70,7 @@ gulp.task('copy', function () {
         .pipe(gulp.dest(assets + 'fonts/font-awesome/'));
 
     gulp.src('node_modules/jquery/dist/jquery.min.js')
-        .pipe(gulp.dest(assets + 'js/src/vendors/'));
+        .pipe(gulp.dest(assets + 'js/build/'));
 
     gulp.src('node_modules/html5shiv/dist/html5shiv.min.js')
         .pipe(gulp.dest(assets + 'js/build/'));
