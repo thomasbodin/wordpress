@@ -1,0 +1,38 @@
+{
+  "name": "starter-kit",
+  "version": "1.0.0",
+  "description": "WordPress Starter Kit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guillaumevergano/starter-kit.git"
+  },
+  "private": true,
+  "author": "Baltazare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guillaumevergano/starter-kit/issues"
+  },
+  "homepage": "https://github.com/guillaumevergano/starter-kit",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-csso": "^1.0.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-less": "^3.0.3",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "imagemin-pngquant": "^4.1.2",
+    "jshint-stylish": "^2.0.1"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "font-awesome": "^4.4.0",
+    "html5shiv": "^3.7.3",
+    "jquery": "^2.1.4",
+    "respond.js": "^1.4.2"
+  }
+}
