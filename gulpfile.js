@@ -66,6 +66,9 @@ gulp.task('copy', function () {
     gulp.src('node_modules/bootstrap/dist/css/bootstrap.css')
         .pipe(gulp.dest(assets + 'css/src/vendors/'));
 
+    gulp.src('node_modules/bootstrap/dist/js/bootstrap.min.js')
+        .pipe(gulp.dest(assets + 'js/build/'));
+
     gulp.src('node_modules/font-awesome/fonts/*')
         .pipe(gulp.dest(assets + 'fonts/font-awesome/'));
 
