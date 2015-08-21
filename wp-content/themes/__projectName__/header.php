@@ -29,12 +29,7 @@
         <meta name="theme-color" content="#ffffff">
 
         <!-- Styles -->
-        <link href="<?php bloginfo( 'template_directory' ); ?>/assets/css/build/main.css" rel="stylesheet">
-
-        <!-- Scripts -->
-        <script src="<?php bloginfo( 'template_directory' ); ?>/assets/js/build/jquery.min.js"></script>
-        <script src="<?php bloginfo( 'template_directory' ); ?>/assets/js/build/bootstrap.min.js"></script>
-        <script src="<?php bloginfo( 'template_directory' ); ?>/assets/js/build/main.js"></script>
+        <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/assets/css/build/main.css">
 
         <!--[if lt IE 9]>
         <script src="<?php bloginfo( 'template_directory' ); ?>/assets/js/build/html5shiv.min.js"></script>
@@ -46,5 +41,13 @@
 
     <body <?php body_class(); ?>>
 
-    <div id="main">
+        <header class="">
+            <!-- your code HTML header here -->
+        </header>
+
+        <nav class="">
+            <!-- your code HTML nav here -->
+        </nav>
+
+        <section class="">
 
