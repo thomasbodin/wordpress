@@ -68,6 +68,21 @@ define('NONCE_SALT',       'put your unique phrase here');
  */
 $table_prefix  = 'wp_';
 
+/**
+ * Activation du debug WP si le site est :
+ * en local
+ * sur baltazarestudio.fr
+ */
+function in_dev(){
+	$devServ = [
+		'localhost',
+		'baltazarestudio.fr',
+		'127.0.0.1',
+	];
+
+	return (in_array( $_SERVER['SERVER_NAME'],$devServ));
+}
+
 /** 
  * Pour les développeurs : le mode deboguage de WordPress.
  * 
@@ -76,8 +91,8 @@ $table_prefix  = 'wp_';
  * Il est fortemment recommandé que les développeurs d'extensions et
  * de thèmes se servent de WP_DEBUG dans leur environnement de 
  * développement.
- */ 
-define('WP_DEBUG', false); 
+ */
+define('WP_DEBUG', in_dev());
 
 /* C'est tout, ne touchez pas à ce qui suit ! Bon blogging ! */
 

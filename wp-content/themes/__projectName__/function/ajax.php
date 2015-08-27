@@ -10,10 +10,7 @@
      *
      */
 
-    //require_once('admin/__function__.php');
-
 
     /**
      * Custom theme
      */
-
