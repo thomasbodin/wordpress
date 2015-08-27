@@ -1,7 +1,7 @@
 <?php
     /**
      *
-     * Fonctions de l'admin
+     * Fonctions admin
      * Décommenter les fonctions pour les utiliser
      *
      * Si la fonction n'existe pas :
@@ -10,11 +10,11 @@
      *
      */
 
-    //require_once('admin/cpt.php');
-    //require_once('admin/wp_bootstrap_navwalker.php');
+    //require_once('admin/add_theme_support.php');
+    //require_once('admin/page_option_acf.php');
+    //require_once('admin/wpadmin_filter.php');
 
 
     /**
      * Custom theme
      */
-
