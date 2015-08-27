@@ -29,11 +29,11 @@
         <meta name="theme-color" content="#ffffff">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/assets/css/build/main.css">
+        <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/css/build/main.css">
 
         <!--[if lt IE 9]>
-        <script src="<?php bloginfo( 'template_directory' ); ?>/assets/js/build/html5shiv.min.js"></script>
-        <script src="<?php bloginfo( 'template_directory' ); ?>/assets/js/build/respond.min.js"></script>
+        <script src="<?php bloginfo( 'template_directory' ); ?>/js/build/html5shiv.min.js"></script>
+        <script src="<?php bloginfo( 'template_directory' ); ?>/js/build/respond.min.js"></script>
         <![endif]-->
 
         <?php wp_head(); ?>
