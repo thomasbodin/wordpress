@@ -87,3 +87,7 @@ if ( !defined('ABSPATH') )
 
 /** Réglage des variables de WordPress et de ses fichiers inclus. */
 require_once(ABSPATH . 'wp-settings.php');
+
+/** Rename url /wp-admin to /admin */
+define('WP_ADMIN_DIR', 'admin');
+define( 'ADMIN_COOKIE_PATH', SITECOOKIEPATH . WP_ADMIN_DIR);

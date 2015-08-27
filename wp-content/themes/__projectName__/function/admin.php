@@ -10,11 +10,13 @@
      *
      */
 
+    //require_once('admin/add_theme_support.php');
     //require_once('admin/cpt.php');
     //require_once('admin/wp_bootstrap_navwalker.php');
+    //require_once('admin/wpadmin_filter.php');
 
 
     /**
-     * Custom theme
+     * Custom function theme
      */
 

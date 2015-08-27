@@ -21,32 +21,21 @@
 
     if ( defined('DOING_AJAX') && DOING_AJAX && is_admin() ) {
 
-        include( $templatepath.'/inc/ajax.php' );
+        include( $templatepath.'/function/ajax.php' );
 
     } elseif ( is_admin() ) {
 
-        include( $templatepath.'/inc/admin.php' );
+        include( $templatepath.'/function/admin.php' );
 
     } elseif ( !defined( 'XMLRPC_REQUEST' ) && !defined( 'DOING_CRON' ) ) {
 
-        include( $templatepath.'/inc/front.php' );
+        include( $templatepath.'/function/front.php' );
 
+    } else {
+
+        include( $templatepath.'/function/all.php' );
     }
 
-
-    /**
-     * Require du repertoire functions
-     */
-    //require_once('functions/wp_bootstrap_navwalker.php');
-    //require_once('functions/cpt.php');
-
-
-    /**
-     * Image à la une
-     */
-    /*if(function_exists('add_theme_support')) {
-        add_theme_support( 'post-thumbnails' );
-    }*/
 
 
     /**
@@ -125,24 +114,6 @@
 
 
     /**
-     * Login CSS custom
-     */
-    /*function custom_login_css(){
-        echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_directory') . '/library/css/login.css" />';
-    }
-    add_action('login_head', 'custom_login_css');*/
-
-
-    /**
-     * siteurl du login
-     */
-    /*function custom_url_login() {
-        return get_bloginfo( 'siteurl' );
-    }
-    add_filter('login_headerurl', 'custom_url_login');*/
-
-
-    /**
      * Affichage des erreurs dans la balise <pre>
      */
     /*function vardump($var){
@@ -160,15 +131,6 @@
         $devAdress = ['82.227.107.39','127.0.0.1','109.190.89.92','37.162.4.188'];
         return in_array($_SERVER['REMOTE_ADDR'],$devAdress) ? true : false;
     }*/
-
-
-    /**
-     * Title page login
-     */
-    /*function custom_title_login($message) {
-        return get_bloginfo('description');
-    }
-    add_filter('login_headertitle', 'custom_title_login');*/
 
 
     /**
