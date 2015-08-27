@@ -14,7 +14,7 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber');
 
 
-var assets = 'wp-content/themes/__projectName__/assets/';
+var assets = 'wp-content/themes/__projectName__/';
 
 var plumberErrorHandler = { errorHandler: notify.onError({
     title: 'Gulp',
@@ -45,13 +45,13 @@ gulp.task('js', function () {
         .pipe(sourcemaps.init())
         .pipe(concat('main.js'))
         .pipe(uglify())
-        .pipe(sourcemaps.write('maps'))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(assets + 'js/build/'));
 });
 
 
 gulp.task('img', function () {
-    return gulp.src(assets + 'img/src/*')
+    return gulp.src(assets + 'assets/img/src/*')
         .pipe(plumber(plumberErrorHandler))
         .pipe(imagemin({
             progressive: true,
@@ -70,7 +70,7 @@ gulp.task('copy', function () {
         .pipe(gulp.dest(assets + 'js/build/'));
 
     gulp.src('node_modules/font-awesome/fonts/*')
-        .pipe(gulp.dest(assets + 'fonts/font-awesome/'));
+        .pipe(gulp.dest(assets + 'assets/fonts/font-awesome/'));
 
     gulp.src('node_modules/jquery/dist/jquery.min.js')
         .pipe(gulp.dest(assets + 'js/build/'));
@@ -102,7 +102,7 @@ gulp.task('watch', function () {
     }));
 
     gulp.watch(
-        assets + 'img/src/*.{png,jpg,gif}', ['img']
+        assets + 'assets/img/src/*.{png,jpg,gif}', ['img']
     ).on('change', function(event){
         console.log('L\'image ' + event.path + ' a ete ajoute/modifie.');
     });
