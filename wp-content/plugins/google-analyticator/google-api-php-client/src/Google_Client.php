@@ -36,23 +36,23 @@ require_once "config.php";
 // If a local configuration file is found, merge it's values with the default configuration
 if (file_exists(dirname(__FILE__)  . '/local_config.php')) {
   $defaultConfig = $apiConfig;
-  require_once(dirname(__FILE__) . '/local_config.php');
+  require_once (dirname(__FILE__)  . '/local_config.php');
   $apiConfig = array_merge($defaultConfig, $apiConfig);
 }
 
 // Include the top level classes, they each include their own dependencies
-require_once GA_API_Path . 'service/Google_Model.php';
-require_once GA_API_Path . 'service/Google_Service.php';
-require_once GA_API_Path . 'service/Google_ServiceResource.php';
-require_once GA_API_Path . 'auth/Google_AssertionCredentials.php';
-require_once GA_API_Path . 'auth/Google_Signer.php';
-require_once GA_API_Path . 'auth/Google_P12Signer.php';
-require_once GA_API_Path . 'service/Google_BatchRequest.php';
-require_once GA_API_Path . 'external/URITemplateParser.php';
-require_once GA_API_Path . 'auth/Google_Auth.php';
-require_once GA_API_Path . 'cache/Google_Cache.php';
-require_once GA_API_Path . 'io/Google_IO.php';
-require_once(GA_API_Path . 'service/Google_MediaFileUpload.php');
+require_once GA_API_Path. 'service/Google_Model.php';
+require_once GA_API_Path. 'service/Google_Service.php';
+require_once GA_API_Path. 'service/Google_ServiceResource.php';
+require_once GA_API_Path. 'auth/Google_AssertionCredentials.php';
+require_once GA_API_Path. 'auth/Google_Signer.php';
+require_once GA_API_Path. 'auth/Google_P12Signer.php';
+require_once GA_API_Path. 'service/Google_BatchRequest.php';
+require_once GA_API_Path. 'external/URITemplateParser.php';
+require_once GA_API_Path. 'auth/Google_Auth.php';
+require_once GA_API_Path. 'cache/Google_Cache.php';
+require_once GA_API_Path. 'io/Google_IO.php';
+require_once(GA_API_Path. 'service/Google_MediaFileUpload.php');
 
 /**
  * The Google API Client
