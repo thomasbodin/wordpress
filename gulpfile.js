@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-    less = require('gulp-less'),
+    sass = require('gulp-sass'),
+    scsslint = require('gulp-scsslint'),
     path = require('path'),
     csso = require('gulp-csso'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -21,21 +22,25 @@ var plumberErrorHandler = { errorHandler: notify.onError({
     message: 'Error: <%= error.message %>'
 })};
 
+gulp.task('scsslint', function() {
+    return gulp.src([assets + 'css/src/**/*.scss'])
+        .pipe(scsslint('scsslint.yml'))
+        .pipe(scsslint.reporter());
+});
 
 gulp.task('css', function () {
-    return gulp.src(assets + 'css/src/main.less')
+    return gulp.src(assets + 'css/src/main.scss', {sourcemap: true})
         .pipe(plumber(plumberErrorHandler))
-        .pipe(less({
-            paths: [ path.join(__dirname, 'less', 'includes') ]
-        }))
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            browsers: ['last 2 versions', 'ie 8', 'ie 9'],
             cascade: false
         }))
         .pipe(csso())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(assets + 'css/build/'));
 });
-
 
 gulp.task('js', function () {
     return gulp.src(assets + 'js/src/**/*.js')
@@ -88,7 +93,7 @@ gulp.task('default', ['css', 'js', 'img', 'copy']);
 
 gulp.task('watch', function () {
     gulp.watch(
-        assets + 'css/src/**/*.less', ['css']
+        assets + 'css/src/**/*.scss', ['scsslint', 'css']
     ).on('change', function(event){
         console.log('Le fichier ' + event.path + ' a ete modifie.');
     });
