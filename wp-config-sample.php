@@ -2,18 +2,19 @@
 /**
  * La configuration de base de votre installation WordPress.
  *
- * Ce fichier contient les réglages de configuration suivants : réglages MySQL,
- * préfixe de table, clefs secrètes, langue utilisée, et ABSPATH.
- * Vous pouvez en savoir plus à leur sujet en allant sur 
- * {@link http://codex.wordpress.org/fr:Modifier_wp-config.php Modifier
- * wp-config.php}. C'est votre hébergeur qui doit vous donner vos
- * codes MySQL.
- *
- * Ce fichier est utilisé par le script de création de wp-config.php pendant
- * le processus d'installation. Vous n'avez pas à utiliser le site web, vous
- * pouvez simplement renommer ce fichier en "wp-config.php" et remplir les
- * valeurs.
- *
+ * Le script de création wp-config.php utilise ce fichier lors de l'installation.
+ * Vous n'avez pas à utiliser l'interface web, vous pouvez directement
+ * renommer ce fichier en "wp-config.php" et remplir les variables à la main.
+ * 
+ * Ce fichier contient les configurations suivantes :
+ * 
+ * * réglages MySQL ;
+ * * clefs secrètes ;
+ * * préfixe de tables de la base de données ;
+ * * ABSPATH.
+ * 
+ * @link https://codex.wordpress.org/Editing_wp-config.php 
+ * 
  * @package WordPress
  */
 
@@ -68,31 +69,21 @@ define('NONCE_SALT',       'put your unique phrase here');
  */
 $table_prefix  = 'wp_';
 
-/**
- * Activation du debug WP si le site est :
- * en local
- * sur baltazarestudio.fr
- */
-function in_dev(){
-	$devServ = [
-		'localhost',
-		'baltazarestudio.fr',
-		'127.0.0.1',
-	];
-
-	return (in_array( $_SERVER['SERVER_NAME'],$devServ));
-}
-
 /** 
- * Pour les développeurs : le mode deboguage de WordPress.
+ * Pour les développeurs : le mode déboguage de WordPress.
  * 
  * En passant la valeur suivante à "true", vous activez l'affichage des
  * notifications d'erreurs pendant votre essais.
  * Il est fortemment recommandé que les développeurs d'extensions et
  * de thèmes se servent de WP_DEBUG dans leur environnement de 
  * développement.
- */
-define('WP_DEBUG', in_dev());
+ * 
+ * Pour obtenir plus d'information sur les constantes 
+ * qui peuvent être utilisée pour le déboguage, consultez le Codex.
+ * 
+ * @link https://codex.wordpress.org/Debugging_in_WordPress 
+ */ 
+define('WP_DEBUG', false); 
 
 /* C'est tout, ne touchez pas à ce qui suit ! Bon blogging ! */
 
@@ -102,7 +93,3 @@ if ( !defined('ABSPATH') )
 
 /** Réglage des variables de WordPress et de ses fichiers inclus. */
 require_once(ABSPATH . 'wp-settings.php');
-
-/** Rename url /wp-admin to /admin */
-define('WP_ADMIN_DIR', 'admin');
-define( 'ADMIN_COOKIE_PATH', SITECOOKIEPATH . WP_ADMIN_DIR);
