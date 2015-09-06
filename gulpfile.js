@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
+    sassimport = require('gulp-sass-bulk-import'),
     scsslint = require('gulp-scsslint'),
     path = require('path'),
     csso = require('gulp-csso'),
@@ -15,7 +16,7 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber');
 
 
-var assets = 'wp-content/themes/__projectName__/';
+var theme = 'wp-content/themes/__projectName__/';
 
 var plumberErrorHandler = { errorHandler: notify.onError({
     title: 'Gulp',
@@ -23,27 +24,30 @@ var plumberErrorHandler = { errorHandler: notify.onError({
 })};
 
 gulp.task('scsslint', function() {
-    return gulp.src([assets + 'css/src/**/*.scss'])
+    return gulp.src([theme + 'css/src/**/*.scss', '!' + theme + 'css/src/vendor/bootstrap/**/*.scss'])
         .pipe(scsslint('scsslint.yml'))
         .pipe(scsslint.reporter());
 });
 
 gulp.task('css', function () {
-    return gulp.src(assets + 'css/src/main.scss', {sourcemap: true})
+    return gulp.src(theme + 'css/src/main.scss', {sourcemap: true})
+        .pipe(sassimport())
         .pipe(plumber(plumberErrorHandler))
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({
+            includePaths: [theme + 'css/src/']
+        }).on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions', 'ie 8', 'ie 9'],
             cascade: false
         }))
         .pipe(csso())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(assets + 'css/build/'));
+        .pipe(gulp.dest(theme + 'css/build/'));
 });
 
 gulp.task('js', function () {
-    return gulp.src(assets + 'js/src/**/*.js')
+    return gulp.src(theme + 'js/src/**/*.js')
         .pipe(plumber(plumberErrorHandler))
         .pipe(jshint('.jshintrc', {fail: true}))
         .pipe(jshint.reporter(stylish))
@@ -51,40 +55,37 @@ gulp.task('js', function () {
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(assets + 'js/build/'));
+        .pipe(gulp.dest(theme + 'js/build/'));
 });
 
 
 gulp.task('img', function () {
-    return gulp.src(assets + 'assets/img/src/*')
+    return gulp.src(theme + 'assets/img/src/*')
         .pipe(plumber(plumberErrorHandler))
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
-        .pipe(gulp.dest(assets + 'img/'));
+        .pipe(gulp.dest(theme + 'assets/img/'));
 });
 
 
 gulp.task('copy', function () {
-    gulp.src('node_modules/bootstrap/dist/css/bootstrap.css')
-        .pipe(gulp.dest(assets + 'css/src/vendors/'));
-
     gulp.src('node_modules/bootstrap/dist/js/bootstrap.min.js')
-        .pipe(gulp.dest(assets + 'js/build/'));
+        .pipe(gulp.dest(theme + 'js/build/'));
 
     gulp.src('node_modules/font-awesome/fonts/*')
-        .pipe(gulp.dest(assets + 'assets/fonts/font-awesome/'));
+        .pipe(gulp.dest(theme + 'assets/fonts/font-awesome/'));
 
     gulp.src('node_modules/jquery/dist/jquery.min.js')
-        .pipe(gulp.dest(assets + 'js/build/'));
+        .pipe(gulp.dest(theme + 'js/build/'));
 
     gulp.src('node_modules/html5shiv/dist/html5shiv.min.js')
-        .pipe(gulp.dest(assets + 'js/build/'));
+        .pipe(gulp.dest(theme + 'js/build/'));
 
     gulp.src('node_modules/respond.js/dest/respond.min.js')
-        .pipe(gulp.dest(assets + 'js/build/'));
+        .pipe(gulp.dest(theme + 'js/build/'));
 });
 
 
@@ -93,13 +94,13 @@ gulp.task('default', ['css', 'js', 'img', 'copy']);
 
 gulp.task('watch', function () {
     gulp.watch(
-        assets + 'css/src/**/*.scss', ['scsslint', 'css']
+        theme + 'css/src/**/*.scss', ['scsslint', 'css']
     ).on('change', function(event){
         console.log('Le fichier ' + event.path + ' a ete modifie.');
     });
 
     gulp.watch(
-        assets + 'js/src/**/*.js', ['js']
+        theme + 'js/src/**/*.js', ['js']
     ).on('change', function(event){
         console.log('Le fichier ' + event.path + ' a ete modifie.');
     }).on('error', notify.onError(function (error) {
@@ -107,7 +108,7 @@ gulp.task('watch', function () {
     }));
 
     gulp.watch(
-        assets + 'assets/img/src/*.{png,jpg,gif}', ['img']
+        theme + 'assets/img/src/*.{png,jpg,gif}', ['img']
     ).on('change', function(event){
         console.log('L\'image ' + event.path + ' a ete ajoute/modifie.');
     });
