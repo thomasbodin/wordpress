@@ -23,14 +23,10 @@ var plumberErrorHandler = { errorHandler: notify.onError({
     message: 'Error: <%= error.message %>'
 })};
 
-gulp.task('scsslint', function() {
-    return gulp.src([theme + 'css/src/**/*.scss', '!' + theme + 'css/src/vendor/bootstrap/**/*.scss'])
-        .pipe(scsslint('scsslint.yml'))
-        .pipe(scsslint.reporter());
-});
-
 gulp.task('css', function () {
-    return gulp.src(theme + 'css/src/main.scss', {sourcemap: true})
+    return gulp.src([theme + 'css/src/**/*.scss', '!' + theme + 'css/src/vendor/bootstrap/**/*.scss'], {sourcemap: true})
+        .pipe(scsslint('scsslint.yml'))
+        .pipe(scsslint.reporter())
         .pipe(sassimport())
         .pipe(plumber(plumberErrorHandler))
         .pipe(sourcemaps.init())
@@ -94,7 +90,7 @@ gulp.task('default', ['css', 'js', 'img', 'copy']);
 
 gulp.task('watch', function () {
     gulp.watch(
-        theme + 'css/src/**/*.scss', ['scsslint', 'css']
+        theme + 'css/src/**/*.scss', ['css']
     ).on('change', function(event){
         console.log('Le fichier ' + event.path + ' a ete modifie.');
     });
