@@ -29,7 +29,8 @@
         <meta name="theme-color" content="#ffffff">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/css/build/main.css">
+        <?php $version = filemtime( get_theme_root().'/'.get_template() . '/css/build/main.css' ); ?>
+        <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/css/build/main.css?v=<?= $version; ?>">
 
         <!--[if lt IE 9]>
         <script src="<?php bloginfo( 'template_directory' ); ?>/js/build/html5shiv.min.js"></script>
@@ -48,9 +49,16 @@
             <!-- your code HTML header here -->
         </header>
 
-        <nav class="">
-            <!-- your code HTML nav here -->
-        </nav>
+        <?php
+        wp_nav_menu(array(
+            'theme_location'    => '',
+            'container'         => 'nav',
+            'menu_id'           => '',
+            'menu_class'        => '',
+            'container_id'      => '',
+            'container_class'   => ''
+        ));
+        ?>
 
         <section class="">
 
