@@ -264,7 +264,7 @@ if ( ! class_exists( 'Yoast_License_Manager', false ) ) {
 			// create api request url
 			$url = add_query_arg( $api_params, $this->product->get_api_url() );
 
-			require_once dirname(__FILE__) . '/class-api-request.php';
+			require_once dirname( __FILE__ ) . '/class-api-request.php';
 			$request = new Yoast_API_Request( $url );
 
 			if ( $request->is_valid() !== true ) {
@@ -456,7 +456,7 @@ if ( ! class_exists( 'Yoast_License_Manager', false ) ) {
 			// make license key readonly when license key is valid or license is defined with a constant
 			$readonly = ( $this->license_is_valid() || $this->license_constant_is_defined );
 
-			require dirname(__FILE__) . '/views/form.php';
+			require dirname( __FILE__ ) . '/views/form.php';
 
 			// enqueue script in the footer
 			add_action( 'admin_footer', array( $this, 'output_script' ), 99 );
@@ -532,7 +532,7 @@ if ( ! class_exists( 'Yoast_License_Manager', false ) ) {
 		 * This takes care of disabling the 'activate' and 'deactivate' buttons
 		 */
 		public function output_script() {
-			require_once dirname(__FILE__) . '/views/script.php';
+			require_once dirname( __FILE__ ) . '/views/script.php';
 		}
 
 		/**

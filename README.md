@@ -3,7 +3,7 @@
 
 ## URL
 
-Dev :
+Dev : http://bltzr.fr/__projectName__
 
 Prod :
 
@@ -27,6 +27,7 @@ Téléphone :
 ## Technos
 
 - WordPress
-- LESS
+- SASS
+- Bootstrap
 - Gulp
 - jQuery

@@ -125,7 +125,7 @@ if( ! class_exists( "Yoast_Update_Manager", false ) ) {
 				'body'      => $api_params
 			);
 
-			require_once dirname(__FILE__) . '/class-api-request.php';
+			require_once dirname( __FILE__ ) . '/class-api-request.php';
 			$request = new Yoast_API_Request( $this->product->get_api_url(), $request_params );
 
 			if( $request->is_valid() !== true ) {

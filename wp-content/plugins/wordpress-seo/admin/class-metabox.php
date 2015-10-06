@@ -1529,7 +1529,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	function get_sample_permalink( $post ) {
 		if ( ! function_exists( 'get_sample_permalink' ) ) {
 			// Front-end post update.
-			include_once(ABSPATH . 'wp-admin/includes/post.php');
+			include_once( ABSPATH . 'wp-admin/includes/post.php' );
 		}
 
 		return get_sample_permalink( $post );

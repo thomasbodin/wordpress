@@ -59,7 +59,7 @@ class WPSEO_Admin_User_Profile {
 
 		wp_nonce_field( 'wpseo_user_profile_update', 'wpseo_nonce' );
 
-		require_once('views/user-profile.php');
+		require_once( 'views/user-profile.php' );
 	}
 
 }

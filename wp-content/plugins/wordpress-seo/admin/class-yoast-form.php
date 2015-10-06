@@ -56,7 +56,7 @@ class Yoast_Form {
 		 * Only needed as our settings page is not under options, otherwise it will automatically be included
 		 * @see settings_errors()
 		 */
-		require_once(ABSPATH . 'wp-admin/options-head.php');
+		require_once( ABSPATH . 'wp-admin/options-head.php' );
 		?>
 		<h2 id="wpseo-title"><?php echo esc_html( get_admin_page_title() ); ?></h2>
 		<div class="wpseo_content_wrapper">

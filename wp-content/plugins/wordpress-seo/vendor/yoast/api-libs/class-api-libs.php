@@ -39,7 +39,7 @@ class Yoast_Api_Libs {
 	private function load_google() {
 		if ( ! class_exists('Yoast_Api_Google', false) ) {
 			// Require the file
-			require_once dirname(__FILE__) . '/' . 'class-api-google.php';
+			require_once dirname( __FILE__ ) . '/' . 'class-api-google.php';
 
 			// Initialize the Google API Class to set the autoloader
 			new Yoast_Api_Google();

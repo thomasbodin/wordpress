@@ -11,7 +11,7 @@ class Yoast_Google_WPCache extends Yoast_Google_Cache {
 	public function __construct() {
 
 		if( ! function_exists('wp_cache_get') ) {
-			require_once(ABSPATH . 'wp-includes/cache.php');
+			require_once( ABSPATH . 'wp-includes/cache.php' );
 		}
 	}
 
