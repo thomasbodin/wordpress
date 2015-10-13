@@ -57,6 +57,12 @@ body {
     text-align: center;
 }
 
+// scss-lint:disable all
+#login {
+    padding-top: 20px;
+}
+// scss-lint:enable all
+
 .login {
     position: relative;
     background: $background-color;
@@ -126,7 +132,9 @@ body {
         color: $button-text-color;
         font-weight: 500;
 
-        &:hover {
+        &:hover,
+        &:active,
+        &:focus {
             transition: ease .5s;
             border: $border-style-bouton-hover;
             box-shadow: none;
@@ -134,5 +142,9 @@ body {
             text-decoration: none;
             color: $button-text-color-hover;
         }
+    }
+
+    .message {
+        border-left: 4px solid $tertiary-color;
     }
 }
