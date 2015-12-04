@@ -65,3 +65,14 @@
         CreateCPT($result);
     }
     add_action('init', 'cpt_init');*/
+
+    // Ajout du rôle client
+    function createRoleClient() {
+        global $wp_roles;
+        if (!isset( $wp_roles )) {
+            $wp_roles = new WP_Roles();
+        }
+        $adm = $wp_roles->get_role('administrator');
+        $wp_roles->add_role('client', 'Client', $adm->capabilities);
+    }
+    add_action('init', 'createRoleClient');
