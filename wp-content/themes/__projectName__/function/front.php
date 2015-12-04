@@ -14,6 +14,8 @@
     require_once('front/wp_generator.php');
     require_once('front/jquery.php');
     require_once('front/emoji.php');
+    //require_once('front/gf_msg_erreur.php');
+    //require_once('front/gf_validation_telephone.php');
     //require_once('front/content_extrait.php');
     require_once('front/custom_login_css.php');
     require_once('front/custom_title_login.php');
