@@ -26,10 +26,10 @@
 
         include( $templatepath.'/function/front.php' );
 
-    } else {
-
-        include( $templatepath.'/function/all.php' );
     }
+
+    include( $templatepath.'/function/all.php' );
+
 
 
     /**
@@ -37,12 +37,6 @@
      * Liste des fonctions pour une utilisation front, back et ajax
      *
      */
-
-    //require_once('function/all/cpt.php');
-    //require_once('function/all/log_user.php');
-    //require_once('function/all/menu.php');
-    //require_once('function/all/wp_bootstrap_navwalker.php');
-
 
     //remove_role('subscriber');
     //remove_role('contributor');
