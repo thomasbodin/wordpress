@@ -67,7 +67,22 @@ define('NONCE_SALT',       '|@zn ]!p:sD  &)@u:+/9LhD5rKw*8T0H^c>){r!C=L8;n429T<c
  * si vous leur donnez chacune un préfixe unique. 
  * N'utilisez que des chiffres, des lettres non-accentuées, et des caractères soulignés!
  */
-$table_prefix  = 'wp_';
+$table_prefix  = 'bltzr_';
+
+/**
+ * Activation du debug WP si le site est :
+ * en local
+ * sur baltazarestudio.fr
+ */
+function in_dev(){
+	$devServ = [
+		'localhost',
+		'bltzr.fr',
+		'127.0.0.1',
+	];
+
+	return (in_array( $_SERVER['SERVER_NAME'],$devServ));
+}
 
 /** 
  * Pour les développeurs : le mode déboguage de WordPress.
@@ -83,7 +98,7 @@ $table_prefix  = 'wp_';
  * 
  * @link https://codex.wordpress.org/Debugging_in_WordPress 
  */ 
-define('WP_DEBUG', false); 
+define('WP_DEBUG', in_dev());
 
 /* C'est tout, ne touchez pas à ce qui suit ! Bon blogging ! */
 
