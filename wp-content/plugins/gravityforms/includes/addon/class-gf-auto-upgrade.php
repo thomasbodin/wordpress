@@ -72,7 +72,7 @@ class GFAutoUpgrade {
 	public function premium_update_push( $premium_update ) {
 
 		if ( ! function_exists( 'get_plugin_data' ) ) {
-			include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 
 		$update = $this->get_version_info( $this->_slug );
@@ -91,7 +91,7 @@ class GFAutoUpgrade {
 	public function premium_update( $premium_update ) {
 
 		if ( ! function_exists( 'get_plugin_data' ) ) {
-			include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 
 		$update = $this->get_version_info( $this->_slug );

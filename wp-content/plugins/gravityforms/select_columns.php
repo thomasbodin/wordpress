@@ -7,7 +7,7 @@ if ( ! class_exists( 'RGForms' ) ) {
 		$wp_root_path = str_repeat( '../', $i );
 
 		if ( file_exists( "{$wp_root_path}wp-load.php" ) ) {
-			require_once("select_columns.php");
+			require_once( "{$wp_root_path}wp-load.php" );
 			require_once( "{$wp_root_path}wp-admin/includes/admin.php" );
 			break;
 		}
