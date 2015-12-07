@@ -7,7 +7,7 @@ if ( ! class_exists( 'RGForms' ) ) {
 		$wp_root_path = str_repeat( '../', $i );
 
 		if ( file_exists( "{$wp_root_path}wp-load.php" ) ) {
-			require_once("preview.php");
+			require_once( "{$wp_root_path}wp-load.php" );
 			require_once( "{$wp_root_path}wp-admin/includes/admin.php" );
 			break;
 		}
@@ -76,6 +76,12 @@ if ( ! empty( $styles ) ) {
 	?>
 </div>
 <?php
+
+/**
+ * Fires in the footer of a Form Preview page
+ *
+ * @param int $_GET['id'] The ID of the form currently being previewed
+ */
 do_action( 'gform_preview_footer', $_GET['id'] );
 ?>
 </body>

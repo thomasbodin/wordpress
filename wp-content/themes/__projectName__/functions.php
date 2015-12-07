@@ -26,10 +26,10 @@
 
         include( $templatepath.'/function/front.php' );
 
-    } else {
-
-        include( $templatepath.'/function/all.php' );
     }
+
+    include( $templatepath.'/function/all.php' );
+
 
 
     /**
@@ -37,12 +37,6 @@
      * Liste des fonctions pour une utilisation front, back et ajax
      *
      */
-
-    //require_once('function/all/cpt.php');
-    //require_once('function/all/log_user.php');
-    //require_once('function/all/menu.php');
-    //require_once('function/all/wp_bootstrap_navwalker.php');
-
 
     //remove_role('subscriber');
     //remove_role('contributor');
@@ -65,3 +59,14 @@
         CreateCPT($result);
     }
     add_action('init', 'cpt_init');*/
+
+    // Ajout du rôle client
+    function createRoleClient() {
+        global $wp_roles;
+        if (!isset( $wp_roles )) {
+            $wp_roles = new WP_Roles();
+        }
+        $adm = $wp_roles->get_role('administrator');
+        $wp_roles->add_role('client', 'Client', $adm->capabilities);
+    }
+    add_action('init', 'createRoleClient');
