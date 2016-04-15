@@ -251,9 +251,6 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 .widget-top a.widget-action {
     cursor: pointer;
 }
-.widget-top a.widget-action:after {
-    padding: 7px 12px;
-}
 </style>
 <script type="text/javascript">
 
@@ -302,7 +299,7 @@ jQuery(document).ready(function($) {
 		
 	});
 
-	$(document).on('click', '.widget .widget-inside .widget-control-actions .alignleft a[href=#remove]', function() {
+	$(document).on('click', '.widget .widget-inside .widget-control-actions .alignleft a[href="#remove"]', function() {
 		
 		$(this).parent().parent().parent().parent().slideUp('normal', function() { $(this).remove(); } );
 		return false;
