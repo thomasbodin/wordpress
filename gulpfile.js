@@ -69,19 +69,19 @@ gulp.task('img', function () {
 
 gulp.task('copy', function () {
     gulp.src('node_modules/bootstrap/dist/js/bootstrap.min.js')
-        .pipe(gulp.dest(theme + 'js/build/'));
+        .pipe(gulp.dest(theme + 'script/build/'));
 
     gulp.src('node_modules/font-awesome/fonts/*')
         .pipe(gulp.dest(theme + 'assets/fonts/font-awesome/'));
 
     gulp.src('node_modules/jquery/dist/jquery.min.js')
-        .pipe(gulp.dest(theme + 'js/build/'));
+        .pipe(gulp.dest(theme + 'script/build/'));
 
     gulp.src('node_modules/html5shiv/dist/html5shiv.min.js')
-        .pipe(gulp.dest(theme + 'js/build/'));
+        .pipe(gulp.dest(theme + 'script/build/'));
 
     gulp.src('node_modules/respond.js/dest/respond.min.js')
-        .pipe(gulp.dest(theme + 'js/build/'));
+        .pipe(gulp.dest(theme + 'script/build/'));
 });
 
 
