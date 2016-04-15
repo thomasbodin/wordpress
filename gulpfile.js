@@ -23,15 +23,15 @@ var plumberErrorHandler = { errorHandler: notify.onError({
     message: 'Error: <%= error.message %>'
 })};
 
-gulp.task('css', function () {
-    return gulp.src([theme + 'css/src/**/*.scss', '!' + theme + 'css/src/vendor/bootstrap/**/*.scss'], {sourcemap: true})
+gulp.task('style', function () {
+    return gulp.src([theme + 'style/src/**/*.scss', '!' + theme + 'style/src/vendor/bootstrap/**/*.scss'], {sourcemap: true})
         .pipe(scsslint('scsslint.yml'))
         .pipe(scsslint.reporter())
         .pipe(sassimport())
         .pipe(plumber(plumberErrorHandler))
         .pipe(sourcemaps.init())
         .pipe(sass({
-            includePaths: [theme + 'css/src/']
+            includePaths: [theme + 'style/src/']
         }).on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions', 'ie 8', 'ie 9'],
@@ -39,11 +39,11 @@ gulp.task('css', function () {
         }))
         .pipe(csso())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(theme + 'css/build/'));
+        .pipe(gulp.dest(theme + 'style/build/'));
 });
 
-gulp.task('js', function () {
-    return gulp.src(theme + 'js/src/**/*.js')
+gulp.task('script', function () {
+    return gulp.src(theme + 'script/src/**/*.js')
         .pipe(plumber(plumberErrorHandler))
         .pipe(jshint('.jshintrc', {fail: true}))
         .pipe(jshint.reporter(stylish))
@@ -51,7 +51,7 @@ gulp.task('js', function () {
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(theme + 'js/build/'));
+        .pipe(gulp.dest(theme + 'script/build/'));
 });
 
 
@@ -85,18 +85,18 @@ gulp.task('copy', function () {
 });
 
 
-gulp.task('default', ['css', 'js', 'img', 'copy']);
+gulp.task('default', ['style', 'script', 'img', 'copy']);
 
 
 gulp.task('watch', function () {
     gulp.watch(
-        theme + 'css/src/**/*.scss', ['css']
+        theme + 'style/src/**/*.scss', ['style']
     ).on('change', function(event){
         console.log('Le fichier ' + event.path + ' a ete modifie.');
     });
 
     gulp.watch(
-        theme + 'js/src/**/*.js', ['js']
+        theme + 'script/src/**/*.js', ['script']
     ).on('change', function(event){
         console.log('Le fichier ' + event.path + ' a ete modifie.');
     }).on('error', notify.onError(function (error) {

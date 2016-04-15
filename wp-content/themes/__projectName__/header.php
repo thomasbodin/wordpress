@@ -29,18 +29,18 @@
         <meta name="theme-color" content="#ffffff">
 
         <!-- Styles -->
-        <?php $version = filemtime( get_theme_root().'/'.get_template() . '/css/build/main.css' ); ?>
-        <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/css/build/main.css?v=<?= $version; ?>">
+        <?php $version = filemtime( get_theme_root().'/'.get_template() . '/style/build/main.css' ); ?>
+        <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ); ?>/style/build/main.css?v=<?= $version; ?>">
 
         <!--[if lt IE 9]>
-        <script src="<?php bloginfo( 'template_directory' ); ?>/js/build/html5shiv.min.js"></script>
-        <script src="<?php bloginfo( 'template_directory' ); ?>/js/build/respond.min.js"></script>
+        <script src="<?php bloginfo( 'template_directory' ); ?>/script/build/html5shiv.min.js"></script>
+        <script src="<?php bloginfo( 'template_directory' ); ?>/script/build/respond.min.js"></script>
         <![endif]-->
 
         <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-        <script>window.jQuery || document.write('<script src="<?php bloginfo( 'template_directory' ); ?>/js/build/jquery.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="<?php bloginfo( 'template_directory' ); ?>/script/build/jquery.min.js"><\/script>')</script>
         <?php wp_head(); ?>
     </head>
 
