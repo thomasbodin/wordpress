@@ -67,25 +67,25 @@ gulp.task('img', function () {
 });
 
 
-gulp.task('copy', function () {
-    gulp.src('node_modules/bootstrap/dist/js/bootstrap.min.js')
+gulp.task('init', function () {
+    gulp.src('bower_components/bootstrap/dist/js/bootstrap.min.js')
         .pipe(gulp.dest(theme + 'script/build/'));
 
-    gulp.src('node_modules/font-awesome/fonts/*')
+    gulp.src('bower_components/font-awesome/fonts/*')
         .pipe(gulp.dest(theme + 'assets/fonts/font-awesome/'));
 
-    gulp.src('node_modules/jquery/dist/jquery.min.js')
+    gulp.src('bower_components/jquery/dist/jquery.min.js')
         .pipe(gulp.dest(theme + 'script/build/'));
 
-    gulp.src('node_modules/html5shiv/dist/html5shiv.min.js')
+    gulp.src('bower_components/html5shiv/dist/html5shiv.min.js')
         .pipe(gulp.dest(theme + 'script/build/'));
 
-    gulp.src('node_modules/respond.js/dest/respond.min.js')
+    gulp.src('bower_components/respond/dest/respond.min.js')
         .pipe(gulp.dest(theme + 'script/build/'));
 });
 
 
-gulp.task('default', ['style', 'script', 'img', 'copy']);
+gulp.task('default', ['style', 'script', 'img']);
 
 
 gulp.task('watch', function () {
