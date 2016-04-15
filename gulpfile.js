@@ -56,7 +56,7 @@ gulp.task('script', function () {
 
 
 gulp.task('img', function () {
-    return gulp.src(theme + 'assets/img/src/*')
+    return gulp.src(theme + 'assets/img/src/**/*')
         .pipe(plumber(plumberErrorHandler))
         .pipe(imagemin({
             progressive: true,
