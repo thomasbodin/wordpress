@@ -13,10 +13,13 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     notify = require('gulp-notify'),
+    iconfont = require('gulp-iconfont'),
+    iconfontCss = require('gulp-iconfont-css'),
     plumber = require('gulp-plumber');
 
 
 var theme = 'wp-content/themes/__projectName__/';
+var runTimestamp = Math.round(Date.now()/1000);
 
 var plumberErrorHandler = { errorHandler: notify.onError({
     title: 'Gulp',
@@ -24,7 +27,7 @@ var plumberErrorHandler = { errorHandler: notify.onError({
 })};
 
 gulp.task('style', function () {
-    return gulp.src([theme + 'style/src/**/*.scss', '!' + theme + 'style/src/vendor/bootstrap/**/*.scss'], {sourcemap: true})
+    return gulp.src([theme + 'style/src/**/*.scss', '!' + theme + 'style/src/vendor/bootstrap/**/*.scss', '!' + theme + 'style/src/vendor/_icons-template.scss', '!' + theme + 'style/src/quark/_icons.scss'], {sourcemap: true})
         .pipe(scsslint('scsslint.yml'))
         .pipe(scsslint.reporter())
         .pipe(sassimport())
@@ -41,6 +44,7 @@ gulp.task('style', function () {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(theme + 'style/build/'));
 });
+
 
 gulp.task('script', function () {
     return gulp.src(theme + 'script/src/**/*.js')
@@ -67,6 +71,28 @@ gulp.task('img', function () {
 });
 
 
+gulp.task('iconfont', function(){
+    return gulp.src(theme + 'assets/fonts/my-font/svg/*.svg')
+        .pipe(iconfontCss({
+            fontName: '__projectName__',
+            path: theme + 'style/src/vendor/_icons-template.scss',
+            targetPath: '../../../style/src/quark/_icons.scss',
+            fontPath: '../../assets/fonts/my-font/'
+        }))
+        .pipe(iconfont({
+            fontName: '__projectName__', // required
+            prependUnicode: true, // recommended option
+            formats: ['ttf', 'eot', 'woff', 'woff2', 'svg'], // default, 'woff2' and 'svg' are available
+            timestamp: runTimestamp // recommended to get consistent builds when watching files
+        }))
+        .on('glyphs', function(glyphs, options) {
+            // CSS templating, e.g.
+            console.log(glyphs, options);
+        })
+        .pipe(gulp.dest(theme + 'assets/fonts/my-font/'));
+});
+
+
 gulp.task('init', function () {
     gulp.src('bower_components/bootstrap/dist/js/bootstrap.min.js')
         .pipe(gulp.dest(theme + 'script/build/'));
@@ -85,7 +111,7 @@ gulp.task('init', function () {
 });
 
 
-gulp.task('default', ['style', 'script', 'img']);
+gulp.task('default', ['style', 'script', 'img', 'iconfont']);
 
 
 gulp.task('watch', function () {
@@ -107,5 +133,11 @@ gulp.task('watch', function () {
         theme + 'assets/img/src/*.{png,jpg,gif}', ['img']
     ).on('change', function(event){
         console.log('L\'image ' + event.path + ' a ete ajoute/modifie.');
+    });
+
+    gulp.watch(
+        theme + 'assets/fonts/my-font/svg/*.svg', ['iconfont']
+    ).on('change', function(event){
+        console.log('La nouvelle icone ' + event.path + ' a ete ajoute/modifie.');
     });
 });
