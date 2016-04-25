@@ -1,9 +1,11 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying 404 pages (Not Found)
+ */
 
-<?php if (have_posts()) : while (have_posts()) : the_post();?>
+get_header(); ?>
 
-    <?php the_content(); ?>
-
-<?php endwhile; endif; ?>
+    <h1>Erreur 404</h1>
+    <h2>La page est introuvable.</h2>
 
 <?php get_footer(); ?>
