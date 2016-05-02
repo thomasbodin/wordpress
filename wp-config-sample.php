@@ -108,3 +108,6 @@ if ( !defined('ABSPATH') )
 
 /** Réglage des variables de WordPress et de ses fichiers inclus. */
 require_once(ABSPATH . 'wp-settings.php');
+
+define( 'DBI_AWS_ACCESS_KEY_ID', 'AKIAIB2VEMLN3WCY5ERA ' );
+define( 'DBI_AWS_SECRET_ACCESS_KEY', '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 ' );
