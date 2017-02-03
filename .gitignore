@@ -6,6 +6,8 @@ _ai-cache
 
 
 #### Directory build
+**/assets/img/*
+!**/assets/img/src
 # TODO
 
 
